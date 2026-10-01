@@ -8,7 +8,6 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 const ICON = {
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
-  edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>',
   mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
   empty: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6"/></svg>',
   warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>',
@@ -242,10 +241,7 @@ function openProfile(id) {
     ${section('Qualification', f.qualification)}
     ${section('About', f.about)}
     ${section('Research interests', f.research)}
-    ${section('Email', f.email, true)}
-    <button class="edit-profile-btn" type="button" data-edit="${esc(f.id)}">${ICON.edit} Edit profile</button>`;
-
-  profileContent.querySelector('[data-edit]')?.addEventListener('click', () => startEdit(f.id));
+    ${section('Email', f.email, true)}`;
 
   lastFocused = document.activeElement;
   modal.classList.add('show');
@@ -274,11 +270,6 @@ document.addEventListener('keydown', (e) => {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 });
-
-async function startEdit(id) {
-  sessionStorage.setItem('editFacultyId', id);
-  location.href = '/admin.html';
-}
 
 /* =========================================================
    BACK TO TOP + TOASTS
