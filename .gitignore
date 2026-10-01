@@ -1,0 +1,13 @@
+# Local agent tooling — not part of the site
+.agents/
+.claude/
+.impeccable/
+skills-lock.json
+
+# Vercel
+.vercel/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+node_modules/

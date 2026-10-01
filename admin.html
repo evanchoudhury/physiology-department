@@ -1,29 +1,135 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Physiology Admin Panel</title><link rel="stylesheet" href="styles.css"><style>
-body{background:#f5f8fa}.admin-shell{width:min(1100px,94%);margin:40px auto}.admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.admin-top h1{font-family:"Playfair Display",serif;margin:0;color:#102238}.admin-top p{color:#718090}.admin-card{background:#fff;border:1px solid #e2e8ed;border-radius:16px;padding:25px;box-shadow:0 8px 30px rgba(20,45,65,.05)}.faculty-list{display:grid;gap:12px}.faculty-row{display:flex;align-items:center;gap:15px;padding:14px;border:1px solid #e6ebef;border-radius:12px}.mini-avatar{width:54px;height:54px;border-radius:12px;background:#e0f2ef;color:#126d67;display:grid;place-items:center;font-weight:700;overflow:hidden;flex:none}.mini-avatar img{width:100%;height:100%;object-fit:cover}.faculty-row .grow{flex:1}.faculty-row h3{margin:0;font-size:15px}.faculty-row p{margin:3px 0 0;color:#7a8997;font-size:12px}.btn2{border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}.btn-blue{background:#123b63;color:#fff}.btn-green{background:#087f78;color:#fff}.btn-light{background:#eef2f5;color:#31445a}.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px}.login-card{width:min(420px,100%);background:#fff;padding:35px;border-radius:18px;border:1px solid #e2e8ed;box-shadow:0 15px 45px rgba(20,45,65,.08)}.login-card h1{font-family:"Playfair Display",serif;margin:0 0 5px}.field{margin:16px 0}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px;color:#536475}.field input,.field textarea{width:100%;padding:12px;border:1px solid #d9e1e7;border-radius:8px;font:inherit}.field textarea{min-height:110px;resize:vertical}.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.photo-preview{width:130px;height:130px;border-radius:14px;object-fit:cover;background:#eef2f5;display:block;margin:10px 0}.editor{margin-top:20px}.notice2{padding:12px;border-radius:8px;background:#eef6f5;color:#13645e;margin-bottom:15px;display:none}.error2{background:#fff0f0;color:#9b3030}.small-note{font-size:11px;color:#8794a0}.danger{background:#a63d3d;color:#fff}.hidden{display:none!important}
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Faculty Management · Department of Physiology</title><meta name="theme-color" content="#e8ebe3"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400..600&display=swap"><link rel="stylesheet" href="styles.css"><style>
+body{background:var(--bone);font-family:var(--sans);color:var(--ink)}
+.admin-shell{width:min(1040px,94%);margin:48px auto}
+.admin-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.admin-top h1{font-family:var(--serif);font-weight:600;letter-spacing:-.025em;margin:8px 0 4px;color:var(--ink);font-size:clamp(1.8rem,4vw,2.4rem)}
+.admin-top>div>p{color:var(--muted);font-size:14px}
+.admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+.admin-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--sh-1)}
+.faculty-list{display:grid;gap:12px}
+.faculty-row{display:flex;align-items:center;gap:16px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--paper);transition:border-color .2s ease,box-shadow .2s ease}
+.faculty-row:hover{border-color:var(--line-2);box-shadow:var(--sh-1)}
+.mini-avatar{width:54px;height:54px;border-radius:13px;background:var(--crimson-tint);color:var(--crimson-deep);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:18px;overflow:hidden;flex:none}
+.mini-avatar img{width:100%;height:100%;object-fit:cover}
+.faculty-row .grow{flex:1;min-width:0}
+.faculty-row h3{font-family:var(--serif);font-weight:600;margin:0;font-size:17px;color:var(--ink)}
+.faculty-row p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.btn2{display:inline-flex;align-items:center;gap:7px;border:1px solid transparent;border-radius:10px;padding:11px 16px;font-family:var(--sans);font-weight:600;font-size:13px;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease}
+.btn2:hover{transform:translateY(-1px)}
+.btn-blue{background:var(--ink);color:var(--bone)}.btn-blue:hover{background:var(--pine)}
+.btn-green{background:var(--crimson);color:#fff}.btn-green:hover{background:var(--crimson-deep)}
+.btn-light{background:transparent;color:var(--ink);border-color:var(--line-2)}.btn-light:hover{border-color:var(--ink);background:var(--paper)}
+.danger{background:transparent;color:var(--crimson-deep);border-color:var(--crimson)}.danger:hover{background:var(--crimson);color:#fff}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login-card{width:min(430px,100%);background:var(--card);padding:38px;border-radius:var(--r-lg);box-shadow:var(--sh-3)}
+.login-card h1{font-family:var(--serif);font-weight:600;letter-spacing:-.025em;margin:0 0 6px;font-size:1.9rem}
+.login-card>p{color:var(--muted);font-size:14px}
+.field{margin:18px 0}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:8px;color:var(--ink-soft)}
+.field input,.field textarea{width:100%;padding:13px 14px;border:1px solid var(--line-2);border-radius:11px;background:var(--paper);color:var(--ink);font:inherit;outline:none;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.field input:focus,.field textarea:focus{border-color:var(--crimson);background:var(--card);box-shadow:0 0 0 4px rgba(194,59,34,.1)}
+.field textarea{min-height:112px;resize:vertical}
+.field input[type=file]{padding:10px;cursor:pointer}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.photo-preview{width:132px;height:132px;border-radius:16px;object-fit:cover;background:var(--bone-2);display:block;margin:12px 0}
+.editor{margin-top:22px}
+.editor h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:6px}
+.notice2{padding:13px 15px;border-radius:11px;background:var(--crimson-tint);color:var(--crimson-deep);font-size:14px;margin-bottom:18px;display:none}
+.error2{background:#fbe3df;color:#8f2512}
+.small-note{font-size:12.5px;color:var(--ink-soft);margin-top:7px}
+.hidden{display:none!important}
 </style></head><body>
-<div id="loginView" class="login-wrap"><div class="login-card"><p class="eyebrow">DEPARTMENT OF PHYSIOLOGY</p><h1>Admin Panel</h1><p style="color:#718090">Sign in to manage faculty profiles.</p><div id="loginMsg" class="notice2"></div><div class="field"><label>Admin Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter admin password"></div><button class="btn2 btn-blue" style="width:100%" onclick="login()">LOGIN</button><p class="small-note">The password is checked securely on the server.</p></div></div>
-<div id="adminView" class="admin-shell hidden"><div class="admin-top"><div><p class="eyebrow">PHYSIOLOGY ADMINISTRATION</p><h1>Faculty Management</h1><p>Add, edit or remove faculty profiles.</p></div><div><button class="btn2 btn-green" onclick="newFaculty()">+ Add Faculty</button> <button class="btn2 btn-light" onclick="logout()">Logout</button></div></div>
+<div id="loginView" class="login-wrap"><div class="login-card"><h1>Admin Panel</h1><p>Sign in to manage faculty profiles.</p><div id="loginMsg" class="notice2"></div><div class="field"><label>Admin Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter admin password"></div><button class="btn2 btn-blue" style="width:100%" onclick="login()">LOGIN</button><p class="small-note">Authenticated securely via Supabase.</p></div></div>
+<div id="adminView" class="admin-shell hidden"><div class="admin-top"><div><h1>Faculty Management</h1><p>Add, edit or remove faculty profiles.</p></div><div><button class="btn2 btn-green" onclick="newFaculty()">+ Add Faculty</button> <button class="btn2 btn-light" onclick="logout()">Logout</button></div></div>
 <div class="admin-card"><div id="msg" class="notice2"></div><div id="listView"><div id="facultyList" class="faculty-list"></div></div>
-<div id="editor" class="editor hidden"><h2 id="editorTitle">Edit Faculty</h2><input id="id" type="hidden"><div class="field"><label>Name *</label><input id="name"></div><div class="field"><label>Role / Designation</label><input id="role" placeholder="FACULTY or HEAD OF DEPARTMENT"></div><div class="field"><label>Designation</label><input id="designation" placeholder="e.g. Professor, Associate Professor"></div><div class="field"><label>Qualification</label><input id="qualification" placeholder="e.g. MBBS, MD (Physiology)"></div><div class="field"><label>About</label><textarea id="about"></textarea></div><div class="field"><label>Research Interests</label><textarea id="research"></textarea></div><div class="field"><label>Email</label><input id="email" type="email"></div><div class="field"><label>Faculty Photograph</label><input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp"><img id="photoPreview" class="photo-preview hidden"><p class="small-note">For this GitHub-based version, keep each image below about 900 KB.</p></div><div class="form-actions"><button class="btn2 btn-green" onclick="saveFaculty()">SAVE CHANGES</button><button class="btn2 btn-light" onclick="showList()">CANCEL</button><button id="deleteBtn" class="btn2 danger" onclick="deleteFaculty()">DELETE FACULTY</button></div></div></div></div>
-<script>
-let faculty=[],editing=null;
+<div id="editor" class="editor hidden"><h2 id="editorTitle">Edit Faculty</h2><input id="id" type="hidden"><div class="field"><label>Name *</label><input id="name"></div><div class="field"><label>Role / Designation</label><input id="role" placeholder="FACULTY or HEAD OF DEPARTMENT"></div><div class="field"><label>Designation</label><input id="designation" placeholder="e.g. Professor, Associate Professor"></div><div class="field"><label>Qualification</label><input id="qualification" placeholder="e.g. MBBS, MD (Physiology)"></div><div class="field"><label>About</label><textarea id="about"></textarea></div><div class="field"><label>Research Interests</label><textarea id="research"></textarea></div><div class="field"><label>Email</label><input id="email" type="email"></div><div class="field"><label>Faculty Photograph</label><input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp"><img id="photoPreview" class="photo-preview hidden" alt="Selected photograph preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E"><p class="small-note">Stored in the database — please keep images under ~500 KB.</p></div><div class="form-actions"><button class="btn2 btn-green" onclick="saveFaculty()">SAVE CHANGES</button><button class="btn2 btn-light" onclick="showList()">CANCEL</button><button id="deleteBtn" class="btn2 danger" onclick="deleteFaculty()">DELETE FACULTY</button></div></div></div></div>
+<script src="supabase-config.js"></script>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+const sb = createClient(window.SUPABASE_URL, window.SUPABASE_ANON);
 const $=id=>document.getElementById(id);
-async function api(action,opts={}){const r=await fetch('/api/admin?action='+action,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});let d={};try{d=await r.json()}catch{}if(!r.ok)throw new Error(d.error||'Request failed');return d}
-function msg(t,err=false){const e=$('msg');e.textContent=t;e.className='notice2 '+(err?'error2':'');e.style.display='block'}
-function loginMsg(t,err=false){const e=$('loginMsg');e.textContent=t;e.className='notice2 '+(err?'error2':'');e.style.display='block'}
-async function login(){try{await api('login',{method:'POST',body:JSON.stringify({password:$('password').value})});$('loginView').classList.add('hidden');$('adminView').classList.remove('hidden');await load();}catch(e){loginMsg(e.message,true)}}
-async function load(){const d=await api('list');faculty=d.faculty||[];renderList();const target=sessionStorage.getItem('editFacultyId');if(target){sessionStorage.removeItem('editFacultyId');const f=faculty.find(x=>x.id===target);if(f)editFaculty(f.id)}}
-function renderList(){$('facultyList').innerHTML=faculty.map(f=>{const av=f.photo?`<img src="${esc(f.photo)}">`:esc(f.initials||initials(f.name));return `<div class="faculty-row"><div class="mini-avatar">${av}</div><div class="grow"><h3>${esc(f.name)}</h3><p>${esc(f.designation||f.role||'Faculty')}</p></div><button class="btn2 btn-blue" onclick="editFaculty('${esc(f.id)}')">EDIT</button></div>`}).join('')}
-function initials(n){return n.replace(/^Dr\\.\\s*/i,'').split(/\\s+/).slice(0,3).map(x=>x[0]).join('').toUpperCase()}
+let faculty=[],editing=null;
+
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function editFaculty(id){editing=faculty.find(f=>f.id===id);if(!editing)return;$('editorTitle').textContent='Edit Faculty';$('id').value=editing.id;$('name').value=editing.name||'';$('role').value=editing.role||'';$('designation').value=editing.designation||'';$('qualification').value=editing.qualification||'';$('about').value=editing.about||'';$('research').value=editing.research||'';$('email').value=editing.email||'';$('photoPreview').classList.toggle('hidden',!editing.photo);if(editing.photo){$('photoPreview').src=editing.photo}$('deleteBtn').classList.remove('hidden');$('listView').classList.add('hidden');$('editor').classList.remove('hidden')}
-function newFaculty(){editing=null;$('editorTitle').textContent='Add Faculty';$('id').value='';['name','role','designation','qualification','about','research','email'].forEach(x=>$(x).value='');$('photoPreview').classList.add('hidden');$('deleteBtn').classList.add('hidden');$('listView').classList.add('hidden');$('editor').classList.remove('hidden')}
-function showList(){$('editor').classList.add('hidden');$('listView').classList.remove('hidden');msg('');}
-function slugify(s){return s.toLowerCase().replace(/^dr\\.\\s*/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
-async function saveFaculty(){const name=$('name').value.trim();if(!name){msg('Name is required.',true);return}let id=$('id').value||slugify(name);if(!editing && faculty.some(f=>f.id===id))id=id+'-'+Date.now().toString().slice(-5);let photo=editing?.photo||'';const file=$('photoFile').files[0];if(file){if(file.size>900*1024){msg('Image is too large. Please use an image below 900 KB.',true);return}photo=await readFile(file)}const payload={id,name,role:$('role').value.trim()||'FACULTY',designation:$('designation').value.trim(),qualification:$('qualification').value.trim(),about:$('about').value.trim(),research:$('research').value.trim(),email:$('email').value.trim(),photo};try{msg('Saving…');const d=await api('save',{method:'POST',body:JSON.stringify(payload)});faculty=d.faculty;editing=faculty.find(f=>f.id===id);renderList();showList();msg('Saved successfully. Vercel will redeploy automatically.')}catch(e){msg(e.message,true)}}
+function initials(n){return n.replace(/^Dr\.\s*/i,'').split(/\s+/).slice(0,3).map(x=>x[0]).join('').toUpperCase()}
+function slugify(s){return s.toLowerCase().replace(/^dr\.\s*/,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
+function msg(t,err=false){const e=$('msg');e.textContent=t;e.className='notice2 '+(err?'error2':'');e.style.display=t?'block':'none'}
+function loginMsg(t,err=false){const e=$('loginMsg');e.textContent=t;e.className='notice2 '+(err?'error2':'');e.style.display=t?'block':'none'}
 function readFile(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
-async function deleteFaculty(){if(!editing)return;if(!confirm('Delete '+editing.name+'?'))return;try{const d=await api('delete',{method:'POST',body:JSON.stringify({id:editing.id})});faculty=d.faculty;editing=null;renderList();showList();msg('Faculty profile deleted.')}catch(e){msg(e.message,true)}}
-async function logout(){await api('logout',{method:'POST'});location.reload()}
-$('photoFile').addEventListener('change',()=>{const f=$('photoFile').files[0];if(f){const r=new FileReader();r.onload=()=>{$('photoPreview').src=r.result;$('photoPreview').classList.remove('hidden')};r.readAsDataURL(f)}})
-(async()=>{try{const d=await api('session');if(d.authenticated){$('loginView').classList.add('hidden');$('adminView').classList.remove('hidden');await load()}}catch{}})();
+
+async function showApp(){$('loginView').classList.add('hidden');$('adminView').classList.remove('hidden');await load();}
+
+async function login(){
+  const password=$('password').value;
+  if(!password){loginMsg('Enter the admin password.',true);return}
+  loginMsg('Signing in…');
+  const {error}=await sb.auth.signInWithPassword({email:window.ADMIN_EMAIL,password});
+  if(error){loginMsg('Incorrect password.',true);return}
+  loginMsg('');await showApp();
+}
+
+async function load(){
+  const {data,error}=await sb.from('faculty').select('*').order('sort_order',{ascending:true});
+  if(error){msg(error.message,true);return}
+  faculty=data||[];renderList();
+  const target=sessionStorage.getItem('editFacultyId');
+  if(target){sessionStorage.removeItem('editFacultyId');const f=faculty.find(x=>x.id===target);if(f)editFaculty(f.id)}
+}
+
+function renderList(){
+  const el=$('facultyList');
+  el.innerHTML=faculty.map(f=>{
+    const av=f.photo?`<img src="${esc(f.photo)}" alt="">`:esc(f.initials||initials(f.name));
+    return `<div class="faculty-row"><div class="mini-avatar">${av}</div><div class="grow"><h3>${esc(f.name)}</h3><p>${esc(f.designation||f.role||'Faculty')}</p></div><button class="btn2 btn-blue" data-edit="${esc(f.id)}">EDIT</button></div>`;
+  }).join('');
+  el.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>editFaculty(b.dataset.edit)));
+}
+
+function editFaculty(id){
+  editing=faculty.find(f=>f.id===id);if(!editing)return;
+  $('editorTitle').textContent='Edit Faculty';$('id').value=editing.id;
+  $('name').value=editing.name||'';$('role').value=editing.role||'';$('designation').value=editing.designation||'';
+  $('qualification').value=editing.qualification||'';$('about').value=editing.about||'';$('research').value=editing.research||'';$('email').value=editing.email||'';
+  $('photoFile').value='';$('photoPreview').classList.toggle('hidden',!editing.photo);if(editing.photo)$('photoPreview').src=editing.photo;
+  $('deleteBtn').classList.remove('hidden');$('listView').classList.add('hidden');$('editor').classList.remove('hidden');msg('');
+}
+
+function newFaculty(){
+  editing=null;$('editorTitle').textContent='Add Faculty';$('id').value='';
+  ['name','role','designation','qualification','about','research','email'].forEach(x=>$(x).value='');
+  $('photoFile').value='';$('photoPreview').classList.add('hidden');$('deleteBtn').classList.add('hidden');
+  $('listView').classList.add('hidden');$('editor').classList.remove('hidden');msg('');
+}
+
+function showList(){$('editor').classList.add('hidden');$('listView').classList.remove('hidden');msg('');}
+
+async function saveFaculty(){
+  const name=$('name').value.trim();if(!name){msg('Name is required.',true);return}
+  let id=$('id').value||slugify(name);
+  if(!editing && faculty.some(f=>f.id===id))id=id+'-'+Date.now().toString().slice(-5);
+  let photo=editing?.photo||'';
+  const file=$('photoFile').files[0];
+  if(file){if(file.size>500*1024){msg('Image is too large. Use an image under 500 KB.',true);return}photo=await readFile(file)}
+  const sort_order=editing?.sort_order??(faculty.reduce((m,f)=>Math.max(m,f.sort_order||0),0)+1);
+  const payload={id,name,role:$('role').value.trim()||'FACULTY',designation:$('designation').value.trim(),qualification:$('qualification').value.trim(),about:$('about').value.trim(),research:$('research').value.trim(),email:$('email').value.trim(),photo,sort_order,updated_at:new Date().toISOString()};
+  msg('Saving…');
+  const {error}=await sb.from('faculty').upsert(payload);
+  if(error){msg(error.message,true);return}
+  await load();showList();msg('Saved successfully.');
+}
+
+async function deleteFaculty(){
+  if(!editing)return;if(!confirm('Delete '+editing.name+'?'))return;
+  const {error}=await sb.from('faculty').delete().eq('id',editing.id);
+  if(error){msg(error.message,true);return}
+  editing=null;await load();showList();msg('Faculty profile deleted.');
+}
+
+async function logout(){await sb.auth.signOut();location.reload()}
+
+$('photoFile').addEventListener('change',()=>{const f=$('photoFile').files[0];if(f){const r=new FileReader();r.onload=()=>{$('photoPreview').src=r.result;$('photoPreview').classList.remove('hidden')};r.readAsDataURL(f)}});
+
+Object.assign(window,{login,newFaculty,saveFaculty,showList,deleteFaculty,logout});
+
+(async()=>{const {data:{session}}=await sb.auth.getSession();if(session)await showApp();})();
 </script></body></html>

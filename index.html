@@ -2,593 +2,331 @@
 <html lang="en">
 
 <head>
+  <script>document.documentElement.classList.add('js')</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e8ebe3">
+  <meta name="description"
+    content="Department of Physiology, North Bengal Medical College and Hospital — faculty, academics, research and departmental information.">
+  <title>Department of Physiology | North Bengal Medical College &amp; Hospital</title>
 
-  <meta
-    name="description"
-    content="Department of Physiology, North Bengal Medical College and Hospital."
-  >
-
-  <title>Department of Physiology | North Bengal Medical College & Hospital</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
-  <header class="site-header">
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
+  <!-- SPLASH -->
+  <div id="splash" role="status" aria-label="Loading">
+    <div class="splash-inner">
+      <svg class="splash-trace" viewBox="0 0 340 76" aria-hidden="true">
+        <path d="M0 38 H88 l10 0 l7 -26 l10 52 l9 -46 l9 40 l8 -20 H175 l8 0 l7 -30 l9 60 l9 -30 H252 l10 0 l6 -14 l7 14 H340" />
+      </svg>
+      <div class="splash-word">
+        <strong>Department of Physiology</strong>
+        <span>North Bengal Medical College &amp; Hospital</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
     <div class="container nav-wrap">
-
-      <!-- BRAND -->
-      <a href="#home" class="brand">
-
-        <div class="brand-mark">
-          NB
-        </div>
-
-        <div class="brand-text">
+      <a href="#home" class="brand" aria-label="Department of Physiology, home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12h4l2-7 4 14 2.5-9 1.8 4H22" />
+          </svg>
+        </span>
+        <span class="brand-text">
           <strong>Department of Physiology</strong>
-          <span>North Bengal Medical College & Hospital</span>
-        </div>
-
+          <span>North Bengal Medical College &amp; Hospital</span>
+        </span>
       </a>
 
-      <!-- DESKTOP / MOBILE MENU BUTTON -->
-      <button
-        class="menu-btn"
-        aria-label="Open navigation menu"
-        type="button"
-      >
-        ☰
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
 
-      <!-- NAVIGATION -->
-      <nav class="nav" aria-label="Main navigation">
-
+      <nav class="nav" id="nav" aria-label="Main">
         <a href="#about">About</a>
-
         <a href="#faculty">Faculty</a>
-
         <a href="#academics">Academics</a>
-
         <a href="#research">Research</a>
-
         <a href="#facilities">Facilities</a>
-
         <a href="#contact">Contact</a>
-
       </nav>
-
     </div>
-
   </header>
-
-
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
 
   <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section id="home" class="hero">
-
-      <div class="container hero-content">
-
-        <p class="eyebrow">
-          NORTH BENGAL MEDICAL COLLEGE & HOSPITAL
-        </p>
-
-        <h1>
-          Department of
-          <br>
-          <span>Physiology</span>
-        </h1>
-
-        <p class="hero-text">
-          Advancing medical education, scientific understanding and
-          human physiology through teaching, research and academic excellence.
-        </p>
-
-        <div class="hero-actions">
-
-          <a href="#faculty" class="btn primary">
-            Meet Our Faculty
-          </a>
-
-          <a href="#about" class="btn secondary">
-            Explore Department
-          </a>
-
+      <canvas class="hero-3d" id="hero3d" aria-hidden="true"></canvas>
+      <div class="container hero-grid">
+        <div class="reveal in">
+          <span class="hero-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h5l2-6 3 12 2-8 1.6 4H22"/></svg> Teaching &amp; research department</span>
+          <h1>The science of how the <em>living body</em> works.</h1>
+          <p class="hero-text">
+            A foundational discipline of medical education — building scientific understanding
+            of human physiology through rigorous teaching, clinical correlation and research.
+          </p>
+          <div class="hero-actions">
+            <a href="#faculty" class="btn primary">
+              Meet the faculty
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#about" class="btn secondary">Explore the department</a>
+          </div>
         </div>
 
+        <aside class="hero-panel reveal d1 in" aria-label="Department at a glance">
+          <p class="panel-title">Department / at a glance</p>
+          <ul>
+            <li><span class="k">Faculty members</span><span class="v accent" id="panelCount">—</span></li>
+            <li><span class="k">Education</span><span class="v">UG · PG</span></li>
+            <li><span class="k">Discipline</span><span class="v">Physiology</span></li>
+            <li><span class="k">Focus</span><span class="v">Teaching · Research</span></li>
+          </ul>
+        </aside>
       </div>
-
     </section>
 
-
-    <!-- =========================
-         STATISTICS
-    ========================== -->
-
-    <section class="stats">
-
+    <!-- STATS -->
+    <section class="stats" aria-label="Key figures">
       <div class="container stats-grid">
-
-        <div>
-          <strong id="facultyCount">11</strong>
-          <span>Faculty Members</span>
-        </div>
-
-        <div>
-          <strong>01</strong>
-          <span>Academic Department</span>
-        </div>
-
-        <div>
-          <strong>UG</strong>
-          <span>Undergraduate Education</span>
-        </div>
-
-        <div>
-          <strong>PG</strong>
-          <span>Postgraduate Education</span>
-        </div>
-
-        <div>
-          <strong>Research</strong>
-          <span>Academic Activities</span>
-        </div>
-
+        <div class="reveal"><div class="stat-v accent"><span id="facultyCount" data-count="11">11</span></div><div class="stat-k">Faculty members</div></div>
+        <div class="reveal d1"><div class="stat-v">UG · PG</div><div class="stat-k">Education levels</div></div>
+        <div class="reveal d2"><div class="stat-v">01</div><div class="stat-k">Academic department</div></div>
+        <div class="reveal d3"><div class="stat-v">Core</div><div class="stat-k">Preclinical science</div></div>
       </div>
-
     </section>
 
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
+    <!-- ABOUT -->
     <section id="about" class="section">
-
       <div class="container split">
-
-        <div>
-
-          <p class="eyebrow">
-            ABOUT THE DEPARTMENT
-          </p>
-
-          <h2>
-            Understanding the science of the human body.
-          </h2>
-
+        <div class="section-head reveal" style="margin-bottom:0">
+          <h2>Understanding the body, system by system.</h2>
         </div>
-
-        <div class="section-copy">
-
-          <p>
-            Welcome to the Department of Physiology at North Bengal
-            Medical College and Hospital. This website presents the
-            department's faculty, academic activities, research interests,
-            facilities and important departmental information.
+        <div class="section-copy reveal d1">
+          <p class="drop">
+            The Department of Physiology at North Bengal Medical College and Hospital introduces
+            medical students to the mechanisms that keep the human body in balance — from cellular
+            function to whole-system regulation.
           </p>
-
           <p>
-            The department is committed to creating a strong foundation
-            in physiology for medical students while encouraging scientific
-            thinking, clinical correlation and research-oriented learning.
+            The department builds a strong foundation in physiology while encouraging scientific
+            thinking, clinical correlation and research-oriented learning. This site presents the
+            department's faculty, academic activities, research interests, facilities and information.
           </p>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         FACULTY
-    ========================== -->
-
+    <!-- FACULTY -->
     <section id="faculty" class="section soft">
-
       <div class="container">
-
-        <div class="section-heading">
-
-          <div>
-
-            <p class="eyebrow">
-              OUR FACULTY
-            </p>
-
-            <h2>
-              Meet the Department
-            </h2>
-
-          </div>
-
-          <p>
-            Click any faculty card to view the profile.
-          </p>
-
+        <div class="section-head reveal">
+          <h2>The people behind the department.</h2>
+          <p>Teachers, researchers and mentors. Select a profile to read more.</p>
         </div>
 
-
-        <!-- Faculty loaded dynamically from API -->
-
-        <div id="facultyGrid" class="faculty-grid">
-
-          <div class="loading">
-            Loading faculty profiles…
+        <div class="faculty-bar reveal d1">
+          <div class="search" id="searchWrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="facultySearch" type="search" placeholder="Search by name or designation…" aria-label="Search faculty" autocomplete="off">
+            <button class="clear" id="searchClear" type="button" aria-label="Clear search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
           </div>
-
+          <div class="faculty-count" id="facultyCountLabel" aria-live="polite"></div>
         </div>
 
+        <div id="facultyGrid" class="faculty-grid" aria-live="polite"></div>
       </div>
-
     </section>
 
-
-    <!-- =========================
-         ACADEMICS
-    ========================== -->
-
+    <!-- ACADEMICS -->
     <section id="academics" class="section">
-
       <div class="container">
-
-        <p class="eyebrow">
-          ACADEMICS
-        </p>
-
-        <h2>
-          Undergraduate & Postgraduate Education
-        </h2>
-
-
-        <div class="info-grid">
-
-          <div class="info-card">
-
-            <span>01</span>
-
-            <h3>
-              Undergraduate (UG) Education
-            </h3>
-
-            <p>
-              Physiology teaching, practical training and clinical
-              correlation for undergraduate medical students.
-            </p>
-
-          </div>
-
-
-          <div class="info-card">
-
-            <span>02</span>
-
-            <h3>
-              Postgraduate (PG) Education
-            </h3>
-
-            <p>
-              Postgraduate teaching, academic training and advanced
-              learning in physiology.
-            </p>
-
-          </div>
-
-
-          <div class="info-card">
-
-            <span>03</span>
-
-            <h3>
-              Academic Activities
-            </h3>
-
-            <p>
-              Seminars, demonstrations, discussions and other
-              departmental academic activities.
-            </p>
-
-          </div>
-
+        <div class="section-head reveal">
+          <h2>Education across every stage of training.</h2>
         </div>
 
+        <div class="rows">
+          <div class="row-item reveal">
+            <span class="row-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
+            </span>
+            <div class="row-body">
+              <h3>Undergraduate education</h3>
+              <p>Physiology teaching, practical training and clinical correlation that gives undergraduate medical students a dependable scientific base for the rest of their studies.</p>
+            </div>
+          </div>
+          <div class="row-item reveal d1">
+            <span class="row-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg>
+            </span>
+            <div class="row-body">
+              <h3>Postgraduate education</h3>
+              <p>Advanced teaching, academic training and specialised study in physiology for postgraduate scholars developing depth and independence.</p>
+            </div>
+          </div>
+          <div class="row-item reveal d2">
+            <span class="row-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 012-2h6v16H5a2 2 0 00-2 2zM21 5a2 2 0 00-2-2h-6v16h6a2 2 0 012 2z"/></svg>
+            </span>
+            <div class="row-body">
+              <h3>Academic activities</h3>
+              <p>Seminars, demonstrations, discussions and departmental sessions that keep teaching active, current and connected to clinical practice.</p>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
 
-
-    <!-- =========================
-         RESEARCH
-    ========================== -->
-
+    <!-- RESEARCH -->
     <section id="research" class="section dark">
-
       <div class="container split">
-
-        <div>
-
-          <p class="eyebrow">
-            RESEARCH
-          </p>
-
-          <h2>
-            From physiological principles to scientific discovery.
-          </h2>
-
+        <div class="reveal">
+          <h2>From physiological principle to scientific discovery.</h2>
         </div>
-
-
-        <div class="section-copy">
-
+        <div class="section-copy reveal d1">
           <p>
-            This section will showcase the department's research areas,
-            ongoing projects, publications, conferences, collaborations
-            and faculty research profiles.
+            This section will showcase the department's research areas, ongoing projects,
+            publications, conferences, collaborations and faculty research profiles as they
+            are confirmed.
           </p>
-
-
           <div class="tag-row">
-
-            <span>Research Areas</span>
-
+            <span>Research areas</span>
             <span>Publications</span>
-
             <span>Projects</span>
-
             <span>Collaborations</span>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         FACILITIES
-    ========================== -->
-
+    <!-- FACILITIES -->
     <section id="facilities" class="section">
-
       <div class="container">
-
-        <p class="eyebrow">
-          FACILITIES
-        </p>
-
-        <h2>
-          Department Facilities
-        </h2>
-
-
+        <div class="section-head reveal">
+          <h2>Spaces built for teaching and enquiry.</h2>
+        </div>
         <div class="facility-grid">
-
-
-          <div class="facility">
-
-            <div class="facility-icon">
-              ⌁
-            </div>
-
-            <h3>
-              Physiology Laboratory
-            </h3>
-
-            <p>
-              Practical teaching and demonstration facilities.
-            </p>
-
+          <div class="facility reveal">
+            <span class="idx">Lab 01</span>
+            <h3>Physiology laboratory</h3>
+            <p>Practical teaching and demonstration facilities where students observe physiological principles first-hand.</p>
           </div>
-
-
-          <div class="facility">
-
-            <div class="facility-icon">
-              ◌
-            </div>
-
-            <h3>
-              Research Facilities
-            </h3>
-
-            <p>
-              Space and resources supporting academic research.
-            </p>
-
+          <div class="facility reveal d1">
+            <span class="idx">Res 02</span>
+            <h3>Research facilities</h3>
+            <p>Space and resources that support academic research and scholarly work within the department.</p>
           </div>
-
-
-          <div class="facility">
-
-            <div class="facility-icon">
-              ▣
-            </div>
-
-            <h3>
-              Academic Resources
-            </h3>
-
-            <p>
-              Teaching resources for students and faculty.
-            </p>
-
+          <div class="facility reveal d2">
+            <span class="idx">Aca 03</span>
+            <h3>Academic resources</h3>
+            <p>Teaching materials and reference resources available to students and faculty across the department.</p>
           </div>
-
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================
-         CALL TO ACTION
-    ========================== -->
-
+    <!-- CTA -->
     <section class="cta">
-
+      <svg class="cta-trace" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 160 H520 l20 0 l14 -70 l20 140 l18 -110 l16 80 H900 l18 0 l14 -60 l18 110 H1440" />
+      </svg>
       <div class="container">
-
-        <p class="eyebrow">
-          DEPARTMENT OF PHYSIOLOGY
-        </p>
-
-        <h2>
-          Education. Research. Excellence.
-        </h2>
-
-        <a href="#contact" class="btn primary">
-          Contact Department
-        </a>
-
+        <h2>Education. Research. Excellence.</h2>
+        <p>Learn more about the Department of Physiology and how to reach the team.</p>
+        <a href="#contact" class="btn secondary">Contact the department</a>
       </div>
-
     </section>
 
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section id="contact" class="section contact">
-
+    <!-- CONTACT -->
+    <section id="contact" class="section soft">
       <div class="container split">
-
-        <div>
-
-          <p class="eyebrow">
-            CONTACT
-          </p>
-
-          <h2>
-            North Bengal Medical College & Hospital
-          </h2>
-
+        <div class="reveal">
+          <h2>North Bengal Medical College &amp; Hospital</h2>
         </div>
-
-
-        <div class="contact-box">
-
-          <p>
-            <strong>
-              Department of Physiology
-            </strong>
-          </p>
-
-          <p>
-            North Bengal Medical College and Hospital
-            <br>
-            West Bengal, India
-          </p>
-
-          <p class="small">
-            Official department contact details will be added
-            after confirmation.
-          </p>
-
+        <div class="contact-box reveal d1">
+          <div class="line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>
+            <div><strong>Department of Physiology</strong></div>
+          </div>
+          <div class="line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div>
+              <span>North Bengal Medical College and Hospital<br>West Bengal, India</span>
+              <span class="muted">Official department contact details will be added after confirmation.</span>
+            </div>
+          </div>
         </div>
-
       </div>
-
     </section>
 
   </main>
 
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
+  <!-- FOOTER -->
   <footer>
-
-    <div class="container footer-wrap">
-
-      <div>
-
-        <strong>
-          Department of Physiology
-        </strong>
-
-        <br>
-
-        <span>
-          North Bengal Medical College & Hospital
-        </span>
-
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>Department of Physiology</strong>
+          <p>North Bengal Medical College &amp; Hospital — advancing medical education and scientific understanding of human physiology.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <div class="footer-col">
+            <p class="col-title">Explore</p>
+            <a href="#about">About</a>
+            <a href="#faculty">Faculty</a>
+            <a href="#academics">Academics</a>
+          </div>
+          <div class="footer-col">
+            <p class="col-title">More</p>
+            <a href="#research">Research</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
       </div>
-
-
-      <div>
-
-        © <span id="year"></span>
-        Department of Physiology
-
+      <div class="footer-bot">
+        <span>© <span id="year"></span> Department of Physiology</span>
+        <span>North Bengal Medical College &amp; Hospital</span>
       </div>
-
     </div>
-
   </footer>
 
-
-  <!-- =========================
-       FACULTY PROFILE MODAL
-  ========================== -->
-
-  <div
-    id="profileModal"
-    class="modal"
-    aria-hidden="true"
-  >
-
-    <div class="profile-modal">
-
-      <button
-        class="modal-close"
-        onclick="closeProfile()"
-        aria-label="Close profile"
-        type="button"
-      >
-        ×
+  <!-- FACULTY MODAL -->
+  <div id="profileModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profileName">
+    <div class="profile-modal" role="document">
+      <button class="modal-close" id="modalClose" aria-label="Close profile" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-
       <div id="profileContent"></div>
-
     </div>
-
   </div>
 
+  <!-- BACK TO TOP -->
+  <button class="to-top" id="toTop" aria-label="Back to top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
 
-  <!-- Main JavaScript -->
+  <!-- TOASTS -->
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="supabase-config.js"></script>
   <script src="script.js"></script>
-
 </body>
 
 </html>
